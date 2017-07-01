@@ -9,10 +9,16 @@ class InputLine extends React.Component{
     return(
       <form>
       <input type="text" placeholder="task"/>
-      <input type="submit" value="Add todo"/>
+      <input
+        type="submit"
+        value="Add todo"
+        onClick={(event) => {
+          event.preventDefault()
+          this.props.submit("test task")
+        }}/>
       </form>
-    )
+      )
+    }
   }
-}
 
 export default InputLine;

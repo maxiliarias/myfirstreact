@@ -10,7 +10,9 @@ const dummyData= [
   { taskText: "Do laundry", completed: false },
   { taskText: "Buy Groceries", completed: true },
   { taskText: "Bake Pie", completed: false }
-]
+];
+
+
 
 class TodoApp extends React.Component{
   constructor(props){
@@ -19,6 +21,16 @@ class TodoApp extends React.Component{
       todos:[]
     }
   }
+  addTodo(task){
+    dummyData.push({
+      taskText: task,
+      completed: false
+    });
+    this.setState({
+      todos: dummyData
+    });
+  }
+  
   componentDidMount(){
     this.setState({
       todos: dummyData
@@ -29,7 +41,7 @@ class TodoApp extends React.Component{
   render(){
     return(
       <div>
-      <InputLine/>
+      <InputLine submit={(task)=>this.addTodo(task)}/>
       <TodoList todos={this.state.todos}/>
       </div>
     )
